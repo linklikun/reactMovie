@@ -6,7 +6,7 @@
 
 1.1 熟悉antdesign的各类框架  
 1.2 安装antdesign包  
-1.3 按需导入组件，有时候需要重新为组建命名
+1.3 按需导入组件，有时候需要重新为组建命名  
 1.4 熟悉组件库的各类组件
 
 ### 2 获取豆瓣数据
@@ -14,7 +14,7 @@
 2.1 豆瓣数据公开，但是有很多限制
 2.2 采用react自带fetch请求数据
 ```
-fetch(url) 
+fetch(url)
 .then(()=>{return res})
 .then((data)=>{console.log(data)})
 ```
