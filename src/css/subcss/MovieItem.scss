@@ -1,0 +1,26 @@
+.box{
+    border: 1px solid #dddddd;
+    text-align: center;
+    width: 10%;
+    // height: 30%;
+    margin: 6px;
+    margin-left: 15px;
+    box-shadow: 0 0 6px #dddddd;
+    padding: 6px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    img{
+        width: 100px;
+        height: 140px;
+    }
+    &:hover{
+        transform: rotate(1deg) scale(1.03);
+    }
+    h4{
+        font-size: 12px;
+    }
+
+}
