@@ -20,6 +20,7 @@ export default class MovieList extends Component {
         }
         this.renderList=this.renderList.bind(this)
         this.loadMovieListByTypeAndPage=this.loadMovieListByTypeAndPage.bind(this)
+        this.pageChange=this.pageChange.bind(this)
     }
     componentWillUpdate(prevProps){
 
@@ -52,8 +53,8 @@ export default class MovieList extends Component {
         // }).then((data)=>{
         //     console.log(data)
         // })
-        console.log(this.state.movieType);
-        console.log(this.state.nowPage);
+        // console.log(this.state.movieType);
+        // console.log(this.state.nowPage);
         const pageSize = this.state.pageSize
         const address = this.state.movieType
         const start=this.state.pageSize*(this.state.nowPage-1)
@@ -61,7 +62,7 @@ export default class MovieList extends Component {
         fetchJsonp(url)
         .then(res=>res.json())
         .then((data)=>{
-            console.log(data);
+            // console.log(data);
             this.setState({
                 isLoading:false,
                 movie:data.subjects,
@@ -71,7 +72,20 @@ export default class MovieList extends Component {
 
         
     }
-   
+    pageChange(page){
+        // console.log(page+'----'+pageSize);
+        // 第一种不适合
+        // window.location.href='/#/movie/'+this.state.movieType+'/'+page
+        // window.location.reload()
+        // 第二种
+        // 
+        this.setState({
+            nowPage:page
+        },function(){
+            this.props.history.push('/movie/'+this.state.movieType+'/'+page)
+            this.loadMovieListByTypeAndPage()
+        })
+    }
     renderList(){
         if(this.state.isLoading){
             return (
@@ -85,7 +99,7 @@ export default class MovieList extends Component {
             )
         }else{
             return (
-                <div>
+                <div >
                     <div className="movieList">
                         {this.state.movie.map((item)=>{
                             return (
@@ -94,8 +108,8 @@ export default class MovieList extends Component {
                         })}
                         
                     </div>
-                    <div>
-                        <Pagination defaultCurrent={6} total={500} />
+                    <div className="pageCode">
+                        <Pagination defaultCurrent={this.state.nowPage} total={this.state.total} pageSize={this.state.pageSize} onChange={this.pageChange}/>
                     </div>
                 </div>
             )
