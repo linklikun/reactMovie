@@ -3,10 +3,11 @@ import React, { Component } from 'react'
 import { Layout, Menu } from 'antd';
 const { Content, Sider } = Layout;
 // 路由组件
-import {Route, Link } from 'react-router-dom'
+import {Route, Link, Switch } from 'react-router-dom'
 // 导入样式
 import '../../css/subcss/Movie.scss'
 import MovieList from './MovieList.jsx';
+import MovieDetail from './MovieDetail.jsx';
 export default class Movie extends Component {
     constructor(props){
         super(props)
@@ -35,7 +36,10 @@ export default class Movie extends Component {
                         minHeight: 280,
                     }}
                     >
-                        <Route path="/movie/:type/:page" component={MovieList}></Route>
+                        <Switch>
+                            <Route exact path="/movie/detail/:id" component={MovieDetail}></Route>
+                            <Route exact path="/movie/:type/:page" component={MovieList}></Route>
+                        </Switch>
                     </Content>
                 </Layout>
             </Layout>

@@ -78,7 +78,8 @@ export default class MovieList extends Component {
         // window.location.href='/#/movie/'+this.state.movieType+'/'+page
         // window.location.reload()
         // 第二种
-        // 
+        // this.props.history.push('/movie/'+this.state.movieType+'/'+page)
+        // 第三种
         this.setState({
             nowPage:page
         },function(){
@@ -103,7 +104,7 @@ export default class MovieList extends Component {
                     <div className="movieList">
                         {this.state.movie.map((item)=>{
                             return (
-                                <MovieItem {...item} key={item.id}></MovieItem>
+                                <MovieItem {...item} key={item.id} history={this.props.history}></MovieItem>
                             )
                         })}
                         
