@@ -1,4 +1,6 @@
 # this is react project
+![](https://i.imgur.com/hTm4HiC.png)
+![](https://i.imgur.com/SMKKFrI.png)
 
 ## 初步完成电影页面构建  
 
